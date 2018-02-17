@@ -1,0 +1,24 @@
+# 设置编编译器
+SET(CMAKE_CXX_COMPILER "/usr/local/Cellar/gcc/7.2.0/bin/g++-7")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "")
+SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+# lib output path
+set (LIBRARY_OUTPUT_PATH ../../lib)
+
+# 链接库
+# LINK_DIRECTORIES(../../lib)
+# SET(EXTRA_LIBS ${EXTRA_LIBS} io)
+
+# include
+INCLUDE_DIRECTORIES(../../include)
+
+
+AUX_SOURCE_DIRECTORY(. UTIL_LIST)
+ADD_LIBRARY(utils ${UTIL_LIST})
+
+# 链接
+# TARGET_LINK_LIBRARIES(utils ${EXTRA_LIBS})
